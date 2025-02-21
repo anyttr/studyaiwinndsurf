@@ -1,0 +1,136 @@
+:root {
+    --primary-color: #4a90e2;
+    --success-color: #2ecc71;
+    --error-color: #e74c3c;
+    --text-color: #2c3e50;
+    --background-color: #f5f6fa;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.upload-section {
+    padding: 20px;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.upload-section.drag-over {
+    border-color: var(--primary-color);
+    background-color: rgba(74, 144, 226, 0.1);
+}
+
+.progress-container {
+    margin-top: 20px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0;
+    height: 20px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    margin-top: 5px;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.upload-status {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.upload-status.error {
+    background-color: rgba(231, 76, 60, 0.1);
+    color: var(--error-color);
+}
+
+.upload-status.success {
+    background-color: rgba(46, 204, 113, 0.1);
+    color: var(--success-color);
+}
+
+.processing-result {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: white;
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+}
+
+.processing-result h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+.content-preview, .extracted-text, .transcription {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #357abd;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.file-label:hover {
+    background-color: #357abd;
+}
+
+.supported-formats {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+}

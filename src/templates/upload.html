@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Co-Pilot - Upload Materials</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Study Materials</h1>
+        
+        <div class="upload-section" id="upload-zone">
+            <form id="upload-form">
+                <label for="file-input" class="file-label">Choose File or Drag & Drop</label>
+                <input type="file" id="file-input" class="file-input" accept=".txt,.doc,.docx,.pdf,.jpg,.jpeg,.png,.mp3,.wav,.m4a,.mp4,.avi,.mov">
+                <button type="submit">Upload</button>
+            </form>
+
+            <div class="supported-formats">
+                Supported formats:
+                <br>
+                Text: .txt, .doc, .docx, .pdf
+                <br>
+                Images: .jpg, .png
+                <br>
+                Audio: .mp3, .wav, .m4a
+                <br>
+                Video: .mp4, .avi, .mov
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+                <div class="progress-text" id="progress-text">0%</div>
+            </div>
+
+            <div class="upload-status" id="upload-status"></div>
+        </div>
+
+        <div id="processing-results"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/upload.js') }}"></script>
+</body>
+</html>
