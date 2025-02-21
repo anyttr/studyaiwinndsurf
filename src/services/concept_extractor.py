@@ -6,18 +6,25 @@ import networkx as nx
 
 class ConceptExtractor:
     def __init__(self):
-        # Load models for English and Romanian
-        self.ner_pipeline_en = pipeline("ner", model="dbmdz/bert-large-cased-finetuned-conll03-english")
-        # For Romanian, we'll use a multilingual model that supports Romanian
-        self.ner_pipeline_ro = pipeline("ner", model="xlm-roberta-base")
-        
-        # Load SpaCy models
-        self.nlp_en = spacy.load("en_core_web_sm")
-        # For Romanian, we'll use the multilingual model
-        self.nlp_ro = spacy.load("xx_ent_wiki_sm")
+        self.ner_pipeline_en = None
+        self.ner_pipeline_ro = None
+        self.nlp_en = None
+        self.nlp_ro = None
+
+    def _load_models(self, language='en'):
+        """Load models lazily when needed"""
+        if language == 'en' and not self.ner_pipeline_en:
+            self.ner_pipeline_en = pipeline("ner", model="dbmdz/bert-large-cased-finetuned-conll03-english")
+            self.nlp_en = spacy.load("en_core_web_sm")
+        elif language == 'ro' and not self.ner_pipeline_ro:
+            self.ner_pipeline_ro = pipeline("ner", model="xlm-roberta-base")
+            self.nlp_ro = spacy.load("xx_ent_wiki_sm")
 
     def extract_concepts(self, text, language='en'):
         """Extract key concepts from text"""
+        # Load models if not already loaded
+        self._load_models(language)
+
         # Choose appropriate models based on language
         ner_pipeline = self.ner_pipeline_en if language == 'en' else self.ner_pipeline_ro
         nlp = self.nlp_en if language == 'en' else self.nlp_ro

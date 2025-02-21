@@ -15,32 +15,23 @@ migrate = Migrate()
 
 def create_app(test_config=None):
     """Create and configure the app"""
-    app = Flask(__name__, instance_relative_config=True)
+    app = Flask(__name__)
     
-    # Load default config
-    app.config.from_mapping(
-        SECRET_KEY=os.getenv('SECRET_KEY', 'dev-key-change-in-production'),
-        SQLALCHEMY_DATABASE_URI=os.getenv('DATABASE_URL', 'sqlite:///studycopilot.db'),
-        SQLALCHEMY_TRACK_MODIFICATIONS=False
-    )
+    # Basic config for testing
+    app.config['SECRET_KEY'] = 'dev'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    if test_config is not None:
-        # Load test config if passed in
-        app.config.update(test_config)
-
-    # Ensure the instance folder exists
-    try:
-        os.makedirs(app.instance_path)
-    except OSError:
-        pass
-    
     # Initialize extensions
     db.init_app(app)
     migrate.init_app(app, db)
     CORS(app)
-    
-    # Register blueprints
+
+    # Initialize routes
     from src.routes import init_routes
     init_routes(app)
     
     return app
+
+# Create the application instance
+app = create_app()
