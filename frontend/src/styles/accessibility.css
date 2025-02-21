@@ -1,0 +1,196 @@
+/* Base accessibility styles */
+:root {
+  --base-font-size: 1rem;
+  --transition-duration: 0.3s;
+  --font-family: 'Roboto', sans-serif;
+  --line-height: 1.6;
+}
+
+/* Apply base styles */
+body {
+  font-size: var(--base-font-size);
+  line-height: var(--line-height);
+  font-family: var(--font-family);
+  transition: all var(--transition-duration) ease;
+}
+
+/* High contrast theme */
+.high-contrast {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+.high-contrast a {
+  color: #ffff00 !important;
+}
+
+.high-contrast button {
+  background-color: #fff !important;
+  color: #000 !important;
+  border: 2px solid #fff !important;
+}
+
+.high-contrast input,
+.high-contrast textarea {
+  background-color: #000 !important;
+  color: #fff !important;
+  border: 2px solid #fff !important;
+}
+
+/* Focus styles */
+*:focus {
+  outline: 3px solid #4A90E2 !important;
+  outline-offset: 2px !important;
+}
+
+.high-contrast *:focus {
+  outline-color: #ffff00 !important;
+}
+
+/* Skip to main content link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* ARIA live regions */
+[aria-live="polite"],
+[aria-live="assertive"] {
+  position: fixed;
+  top: -10000px;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* OpenDyslexic font */
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/fonts/OpenDyslexic-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Keyboard navigation styles */
+[tabindex]:not([tabindex="-1"]):focus {
+  outline: 3px solid #4A90E2 !important;
+  outline-offset: 2px !important;
+}
+
+/* Form field accessibility */
+input[type="checkbox"],
+input[type="radio"] {
+  width: 1.2em;
+  height: 1.2em;
+}
+
+/* Improved button accessibility */
+button {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.5em 1em;
+}
+
+/* Link accessibility */
+a {
+  text-decoration: underline;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+  background-color: rgba(74, 144, 226, 0.1);
+}
+
+/* Table accessibility */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  text-align: left;
+  background-color: #f5f5f5;
+}
+
+th,
+td {
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+/* Image accessibility */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Color contrast helpers */
+.text-contrast-high {
+  color: #000 !important;
+  background-color: #fff !important;
+}
+
+.text-contrast-higher {
+  color: #fff !important;
+  background-color: #000 !important;
+}
+
+/* Error states */
+.error {
+  border-color: #dc3545 !important;
+  color: #dc3545 !important;
+}
+
+.error-message {
+  color: #dc3545;
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+/* Success states */
+.success {
+  border-color: #28a745 !important;
+  color: #28a745 !important;
+}
+
+.success-message {
+  color: #28a745;
+  font-weight: bold;
+  margin-top: 4px;
+}

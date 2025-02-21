@@ -8,8 +8,8 @@ class ConceptExtractor:
     def __init__(self):
         # Load models for English and Romanian
         self.ner_pipeline_en = pipeline("ner", model="dbmdz/bert-large-cased-finetuned-conll03-english")
-        # For Romanian, we'll use a multilingual model
-        self.ner_pipeline_ro = pipeline("ner", model="xlm-roberta-large-finetuned-conll03-romanian")
+        # For Romanian, we'll use a multilingual model that supports Romanian
+        self.ner_pipeline_ro = pipeline("ner", model="xlm-roberta-base")
         
         # Load SpaCy models
         self.nlp_en = spacy.load("en_core_web_sm")
